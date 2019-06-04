@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 
 def load_dataset():
-    df = pd.read_csv("data/insurance.csv")
+    df = pd.read_csv("../data/insurance.csv")
     df = transform_features(df)
     df = encode_features(df)
     X_train, X_test, y_train, y_test = split_data(df)
