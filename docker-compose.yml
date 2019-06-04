@@ -12,6 +12,6 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    command: bash -c "python -W ignore core/ml.py"
+    command: bash -c "python -W ignore app.py"
     volumes:
       - $WORK_DIR:/srv
