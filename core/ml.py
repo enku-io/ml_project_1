@@ -2,14 +2,15 @@ import tensorflow as tf
 import numpy as np # linear algebra
 import pandas as pd
 from core.preprocess import load_dataset
+from sklearn import metrics
 
-
-
-def train_model(X_train, X_test, y_train, y_test):
-    model = tf.keras.models.Sequential([
-      tf.keras.layers.Dense(12, activation=tf.nn.relu, input_shape=[len(X_train.keys())]),
+model = tf.keras.models.Sequential([
+      tf.keras.layers.Dense(12, activation=tf.nn.relu, input_shape=[7]),
       tf.keras.layers.Dense(1, activation=tf.nn.sigmoid)
     ])
+
+def train_model(X_train, X_test, y_train, y_test):
+
     model.compile(optimizer='adam',
                   loss='binary_crossentropy',
                   metrics=['accuracy'])
