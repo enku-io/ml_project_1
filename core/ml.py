@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np # linear algebra
 import pandas as pd
-from preprocess import load_dataset
+from core.preprocess import load_dataset
 from sklearn import metrics
 
 model = tf.keras.models.Sequential([
@@ -26,7 +26,4 @@ def predict_model(X_test,y_test):
     nn_fpr, nn_tpr, thresholds = metrics.roc_curve(y_test, nn_y_pred)
     print("AUC: ", metrics.auc(nn_fpr, nn_tpr))
 
-if __name__ == '__main__':
-    X_train, X_test, y_train, y_test = load_dataset()
-    train_model(X_train, X_test, y_train, y_test)
-    predict_model(X_test,y_test)
+i
