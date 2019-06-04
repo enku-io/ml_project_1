@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np # linear algebra
 import pandas as pd
-from core.preprocess import load_dataset
+from preprocess import load_dataset
 from sklearn import metrics
 
 model = tf.keras.models.Sequential([
