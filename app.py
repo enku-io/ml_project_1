@@ -1,7 +1,10 @@
 from flask import Flask
 import core.ml
+import os
+from core.ml import  train_model,predict_model
+from core.preprocess import load_dataset
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+
 app = Flask(__name__)
 
 

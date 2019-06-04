@@ -1,14 +1,16 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn import preprocessing
 import os
-from app import ROOT
+from config import ROOT
 
 
 def load_dataset():
-    df = pd.read_csv(os.path.join(ROOT,"data/insurance.csv")
+    df = pd.read_csv(os.path.join(ROOT,"data/insurance.csv"))
     df = transform_features(df)
     df = encode_features(df)
+    df = add_feature(df)
     X_train, X_test, y_train, y_test = split_data(df)
     return X_train, X_test, y_train, y_test
 
@@ -24,6 +26,11 @@ def simplify_bmi(data):
     group_names = ['Small', 'Medium', 'Big', 'vBig']
     categories = pd.cut(data.bmi, bins, labels=group_names)
     data.bmi = categories
+    return data
+
+def add_feature(data):
+    data['approved'] = 0
+    data['approved'] = np.where(data['charges'] < 16639.912515, 1, 0)
     return data
 
 def encode_features(data):
