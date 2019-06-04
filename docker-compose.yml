@@ -1,0 +1,17 @@
+version: "3"
+services:
+  jupyter:
+    container_name: jupyter
+    image: jupyter/scipy-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - $WORK_DIR:/home/jovyan/work
+  flask:
+    container_name: flask
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: bash -c "python -W ignore core/ml.py"
+    volumes:
+      - $WORK_DIR:/srv
